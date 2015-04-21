@@ -163,6 +163,13 @@
             });
 
 
+            // load history
+            var saved_data = window.localStorage["md_data"];
+            if (saved_data !== void 0){
+                markdown_editor.getSession().setValue(saved_data);
+            }
+
+
             // preload editor
             var md_content = markdown_editor.getSession().getValue();
             var html_content = marked(md_content);
@@ -171,6 +178,7 @@
 
             markdown_editor.getSession().on("change", function(){
                 var md_content = markdown_editor.getSession().getValue();
+                window.localStorage["md_data"] = md_content;
                 var html_content = marked(md_content);
                 // var parsed = $.parseHTML(html_content);
                 $("#editor").html(html_content);
