@@ -1,9 +1,8 @@
 var marked = require('marked');
 var fs = require("fs");
 var NodePDF = require('nodepdf');
-
 var mathjax_markdown = {};
-
+var css_template = fs.readFileSync("css_template/index.css", 'utf8');
 /**
  *
  * Load markdown content
@@ -25,6 +24,21 @@ var mathjax_markdown = {};
         // local
         //html += '<script type="text/javascript" src="./MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>';
     }
+
+    // apply html head body
+    html = "<!doctype html>" +
+           "<html>" +
+           "<head>" +
+           "<meta charset='utf-8'>" +
+           "<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>"+
+           "<style>" +
+            // apply css
+                css_template + 
+           "</style>" +
+           "</head>" +
+           "<body>" + html + "</body>" +
+           "</html>";
+
     return html;
 };
 /**

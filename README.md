@@ -18,5 +18,8 @@ mathjax_markdown a.md a.pdf    # compile a.md to a.pdf
 ### API
 Please check **mathjax_markdown.js**
 
+### Style
+css style is written in ** css_template/index.css **, feel free to modify it.
+
 ### TODO
 Add CSS support.
