@@ -4,7 +4,7 @@
 - eg $\$$x_1 + 2$\$$ will be render as $x_1 + 2$
 
 ### Demo
-** [index_mathjax.html](https://rawgit.com/shd101wyy/MathJax-Markdown/master/index.html) **
+** [index_mathjax.html](https://rawgit.com/shd101wyy/MathJax-Markdown/master/index.html) **  
 ** [index_katex.html](https://rawgit.com/shd101wyy/MathJax-Markdown/master/index_katex.html) **
 
 ### Implementation.
