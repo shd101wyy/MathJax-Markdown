@@ -4,11 +4,14 @@
 - eg $\$$x_1 + 2$\$$ will be render as $x_1 + 2$
 
 ### Demo
-** [index.html](https://rawgit.com/shd101wyy/MathJax-Markdown/master/index.html) **
+** [index_mathjax.html](https://rawgit.com/shd101wyy/MathJax-Markdown/master/index.html) **
+** [index_katex.html](https://rawgit.com/shd101wyy/MathJax-Markdown/master/index_katex.html) **
 
 ### Implementation.
 - I used ** [marked](https://github.com/chjj/marked) ** to convert markdown code to html code.
-- I used ** [MathJax](https://www.mathjax.org/)** to render math expression in * LaTex * style.
+- I used **MathJax** or **Katex** for math expression rendering in * LaTex * style.
+    - ** [MathJax](https://www.mathjax.org/)**
+    - ** [Katex](https://github.com/Khan/KaTeX)**
 - I used ** [NodePDF(depends on PhantomJS)](https://github.com/TJkrusinski/NodePDF) ** to compile rendered html to pdf file.
 
 ### Usage
