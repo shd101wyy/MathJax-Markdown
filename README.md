@@ -22,4 +22,5 @@ Please check **mathjax_markdown.js**
 css style is written in ** css_template/index.css **, feel free to modify it.
 
 ### TODO
-Add CSS support.
+- Add CSS support.
+- pdf hyperlink fix
