@@ -3,6 +3,8 @@
 - Put your math expression within $\$...\$$
 - eg $\$$x_1 + 2$\$$ will be render as $x_1 + 2$
 
+### Demo
+** [index.html](https://rawgit.com/shd101wyy/MathJax-Markdown/master/index.html) **
 
 ### Implementation.
 - I used ** [marked](https://github.com/chjj/marked) ** to convert markdown code to html code.
