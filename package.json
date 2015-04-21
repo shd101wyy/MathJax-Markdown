@@ -13,6 +13,8 @@
   "author": "Yiyi Wang",
   "license": "MIT",
   "dependencies": {
-      "marked": "latest"
+      "marked": "latest",
+      "phantomjs": "latest",
+      "nodepdf": "latest"
   }
 }

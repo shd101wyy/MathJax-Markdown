@@ -1,6 +1,6 @@
-//var markdown = require("markdown").markdown;
 var marked = require('marked');
 var fs = require("fs");
+var NodePDF = require('nodepdf');
 
 var mathjax_markdown = {};
 
@@ -64,16 +64,38 @@ mathjax_markdown.md_to_html = function(md_file_name, html_file_name, use_mathjax
  * jsPDF doesn't have nodejs port
  */
 mathjax_markdown.md_to_pdf = function(md_file_name, pdf_file_name, use_mathjax){
-    console.log("not implemented yet");
-};
-/*
-mathjax_markdown.md_to_pdf = function(md_file_name, pdf_file_name, use_mathjax){
-    if (use_mathjax === void 0)
-        use_mathjax = true;
-
+    console.log("Compiling to pdf");
     var md_content = fs.readFileSync(md_file_name, 'utf8');
-    mathjax_markdown.pdf(md_content, pdf_file_name, use_mathjax);
+    var html_content = mathjax_markdown.html(md_content, use_mathjax);
+    var pdf = new NodePDF(null, pdf_file_name, {
+        "content": html_content,
+        /*'viewportSize': {
+            'width': 1440,
+            'height': 900
+        },*/
+        'args': '--debug=true'
+    });
+
+    pdf.on('error', function(msg){
+        console.log(msg);
+    });
+
+    pdf.on('done', function(pathToFile){
+        console.log(pathToFile);
+    });
+
+    // listen for stdout from phantomjs
+    pdf.on('stdout', function(stdout){
+         // handle
+    });
+
+    // listen for stderr from phantomjs
+    pdf.on('stderr', function(stderr){
+        // handle
+    });
+
 };
-*/
+
+
 if (typeof(module) !== "undefined")
     module.exports = mathjax_markdown;

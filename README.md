@@ -7,4 +7,16 @@
 ### Implementation.
 - I used ** [marked](https://github.com/chjj/marked) ** to convert markdown code to html code.
 - I used ** [MathJax](https://www.mathjax.org/)** to render math expression in * LaTex * style.
-- I used ** [JsPDF](https://github.com/MrRio/jsPDF) ** to compile rendered html to pdf file.
+- I used ** [NodePDF(depends on PhantomJS)](https://github.com/TJkrusinski/NodePDF) ** to compile rendered html to pdf file.
+
+### Usage
+```shell
+mathjax_markdown a.md a.html  # compile a.md to a.html
+mathjax_markdown a.md a.pdf    # compile a.md to a.pdf
+```
+
+### API
+Please check **mathjax_markdown.js**
+
+### TODO
+Add CSS support.

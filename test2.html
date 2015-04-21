@@ -1,2 +1,15 @@
-<script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}}); </script>
-<p>$1 + 2$</p>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.js"></script>
+    </head>
+    <body>
+        <p id="math">
+        </p>
+    </body>
+    <script>
+        var math = document.getElementById("math");
+        katex.render("c = a + x_{a} \\in x", math);
+    </script>
+</html>

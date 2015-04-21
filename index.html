@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title> Mathjax Markdown Editor </title>
@@ -14,7 +15,18 @@
         <!-- marked -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
 
-        <script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}}); </script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
+        <script type="text/x-mathjax-config"> MathJax.Hub.Config(
+            {tex2jax:
+                {inlineMath:
+                    [["$","$"], ["\\(","\\)"]]}
+             /*, SVG: {
+                 scale: 100
+             }*/
+             /*, jax: ["input/TeX","output/SVG"],
+             SVG: {scale: 400}*/
+             });
+        </script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
 
         <!-- mathjax_markdown -->
         <!--
@@ -30,6 +42,7 @@
             left: 50%;
             float: right
             width: 50%;
+            padding: 50px;
         }
         #editor2{
             position: absolute;
@@ -74,7 +87,7 @@
 
             // source can be HTML-formatted string, or a reference
             // to an actual DOM element from which the text will be scraped.
-            , source = $('#editor')[0]
+            , source = $('#editor').get(0)
 
             // we support special element handlers. Register them with jQuery-style
             // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
@@ -82,10 +95,10 @@
             // (class, of compound) at this time.
             , specialElementHandlers = {
                 // element with id of "bypass" - jQuery style selector
-                '#generate_pdf_btn': function(element, renderer){
+                /*'div to be rendered out': function(element, renderer){
                     // true = "handled elsewhere, bypass text extraction"
                     return true
-                }
+                }*/
             }
 
             margins = {
@@ -131,6 +144,8 @@
                 var html_content = marked(md_content);
                 // var parsed = $.parseHTML(html_content);
                 $("#editor").html(html_content);
+
+                // generate math
                 MathJax.Hub.Queue(["Typeset", MathJax.Hub, "editor"]);
             });
 
