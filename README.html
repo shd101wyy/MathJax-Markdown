@@ -1,0 +1,14 @@
+<h3 id="preview-markdown-with-mathjax-support">Preview Markdown with MathJax support</h3>
+<p><strong> Inline Math Support using MathJax </strong></p>
+<ul>
+<li>Put your math expression within $\$...\$$</li>
+<li>eg $\$$x_1 + 2$\$$ will be render as $x_1 + 2$</li>
+</ul>
+<h3 id="implementation-">Implementation.</h3>
+<ul>
+<li>I used <strong> <a href="https://github.com/chjj/marked">marked</a> </strong> to convert markdown code to html code.</li>
+<li>I used <strong> <a href="https://www.mathjax.org/">MathJax</a></strong> to render math expression in <em> LaTex </em> style.</li>
+<li>I used <strong> <a href="https://github.com/MrRio/jsPDF">JsPDF</a> </strong> to compile rendered html to pdf file.</li>
+</ul>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}}); </script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>

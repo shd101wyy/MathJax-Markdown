@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+var fs = require("fs");
+var mathjax_markdown = require("./mathjax_markdown.js");
+
+if (!String.prototype.endsWith) {
+  String.prototype.endsWith = function(searchString, position) {
+      var subjectString = this.toString();
+      if (position === undefined || position > subjectString.length) {
+        position = subjectString.length;
+      }
+      position -= searchString.length;
+      var lastIndex = subjectString.indexOf(searchString, position);
+      return lastIndex !== -1 && lastIndex === position;
+  };
+}
+
+/**
+ * usage
+ * ./mathjax_markdown a.md a.html
+ * ./mathjax_markdown a.md a.pdf
+ * ./mathjax_markdown a.md
+ */
+if (process.argv.length === 3){
+    var md_file_content = fs.readFileSync(process.argv[2], 'utf8');
+    var html_content = mathjax_markdown.html(md_file_content);
+    console.log(html_content);
+}
+else if (process.argv.length === 4){
+    if (process.argv[3].endsWith(".html")){
+        mathjax_markdown.md_to_html(process.argv[2], process.argv[3]);
+    }
+    else if (process.argv[3].endsWith(".pdf")){
+        mathjax_markdown.md_to_pdf(process.argv[2], process.argv[3]);
+    }
+}
