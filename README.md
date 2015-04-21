@@ -24,3 +24,7 @@ css style is written in ** css_template/index.css **, feel free to modify it.
 ### TODO
 - Add CSS support.
 - pdf hyperlink fix
+
+### ATTENTION
+- The pdf conversion doesn't work properly sometimes.
+- You can convert your markdown file to html file first, then use browser to print it as pdf.
