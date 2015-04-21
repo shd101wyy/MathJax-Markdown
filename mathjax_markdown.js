@@ -24,21 +24,6 @@ var css_template = fs.readFileSync("css_template/index.css", 'utf8');
         // local
         //html += '<script type="text/javascript" src="./MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>';
     }
-
-    // apply html head body
-    html = "<!doctype html>" +
-           "<html>" +
-           "<head>" +
-           "<meta charset='utf-8'>" +
-           "<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>"+
-           "<style>" +
-            // apply css
-                css_template + 
-           "</style>" +
-           "</head>" +
-           "<body>" + html + "</body>" +
-           "</html>";
-
     return html;
 };
 /**
@@ -65,6 +50,21 @@ mathjax_markdown.md_to_html = function(md_file_name, html_file_name, use_mathjax
     var md_content = fs.readFileSync(md_file_name, 'utf8');
     var html_content = mathjax_markdown.html(md_content, use_mathjax);
 
+    // apply html head body
+    html_content = "<!doctype html>" +
+           "<html>" +
+           "<head>" +
+           "<meta charset='utf-8'>" +
+           "<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>"+
+           "<style>" +
+            // apply css
+                css_template +
+           "</style>" +
+           "</head>" +
+           "<body>" + html_content + "</body>" +
+           "</html>";
+
+
     fs.writeFile(html_file_name, html_content, function(err){
         if (err){
             console.log(err);
@@ -81,6 +81,24 @@ mathjax_markdown.md_to_pdf = function(md_file_name, pdf_file_name, use_mathjax){
     console.log("Compiling to pdf");
     var md_content = fs.readFileSync(md_file_name, 'utf8');
     var html_content = mathjax_markdown.html(md_content, use_mathjax);
+
+    // apply html head body
+    // ATTENTION:
+    // It doesn't compile to PDF if I add <!doctype html>
+    html_content = // "<!doctype html>" +
+           "<html>" +
+           "<head>" +
+           "<meta charset='utf-8'>" +
+           "<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>"+
+           "<style>" +
+        // apply css
+                   css_template +
+          "</style>" +
+           "</head>" +
+           "<body>" + html_content + "</body>" +
+           "</html>";
+
+    // create pdf
     var pdf = new NodePDF(null, pdf_file_name, {
         "content": html_content,
         /*'viewportSize': {
