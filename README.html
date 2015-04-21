@@ -160,14 +160,17 @@ sup {
 <li>I used <strong> <a href="https://github.com/TJkrusinski/NodePDF">NodePDF(depends on PhantomJS)</a> </strong> to compile rendered html to pdf file.</li>
 </ul>
 <h3 id="usage">Usage</h3>
-<pre><code class="lang-shell">mathjax_markdown a.md a.html  # compile a.md to a.html
-mathjax_markdown a.md a.pdf    # compile a.md to a.pdf
+<pre><code class="lang-shell">mathjax_markdown <span class="hljs-operator">a</span>.md <span class="hljs-operator">a</span>.html  <span class="hljs-comment"># compile a.md to a.html</span>
+mathjax_markdown <span class="hljs-operator">a</span>.md <span class="hljs-operator">a</span>.pdf    <span class="hljs-comment"># compile a.md to a.pdf</span>
 </code></pre>
 <h3 id="api">API</h3>
 <p>Please check <strong>mathjax_markdown.js</strong></p>
 <h3 id="style">Style</h3>
 <p>css style is written in <strong> css_template/index.css </strong>, feel free to modify it.</p>
 <h3 id="todo">TODO</h3>
-<p>Add CSS support.</p>
+<ul>
+<li>Add CSS support.</li>
+<li>pdf hyperlink fix</li>
+</ul>
 
 <script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}}); </script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script></body></html>

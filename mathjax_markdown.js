@@ -3,6 +3,16 @@ var fs = require("fs");
 var NodePDF = require('nodepdf');
 var mathjax_markdown = {};
 var css_template = fs.readFileSync(__dirname + "/css_template/index.css", 'utf8');
+
+var highlightjs = require("highlight.js");
+
+// Synchronous highlighting with highlight.js
+marked.setOptions({
+  highlight: function (code) {
+    return highlightjs.highlightAuto(code).value;
+  }
+});
+
 /**
  *
  * Load markdown content
@@ -33,6 +43,10 @@ var css_template = fs.readFileSync(__dirname + "/css_template/index.css", 'utf8'
            "<head>" +
            "<meta charset='utf-8'>" +
            "<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>"+
+
+           // apply css for code block
+           '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">' +
+
            "<style>" +
             // apply css
                 css_template +
