@@ -157,6 +157,17 @@
             return output_string;
         }
 
+        // parse markdown content to html
+        function parseMD(input_string){
+            // replace math expression
+            var replaced = parseKatex(input_string);
+            if (replaced === void 0)
+                return "error";
+            // convert to html
+            return marked(replaced);
+        }
+
+
         /*
             PrintElem and Popup Functions referred from
             http://stackoverflow.com/questions/2255291/print-the-contents-of-a-div
@@ -187,6 +198,7 @@
 
             return true;
         }
+
         function generatePDF(){
             $("#editor2").printElement();
             return;
@@ -216,27 +228,17 @@
 
             // preload editor
             var md_content = markdown_editor.getSession().getValue();
-            md_content = parseKatex(md_content);
-            var html_content = marked(md_content);
+            var html_content = parseMD(md_content);
             // var parsed = $.parseHTML(html_content);
             $("#editor").html(html_content);
 
+            // live preview
             markdown_editor.getSession().on("change", function(){
                 var md_content = markdown_editor.getSession().getValue();
                 window.localStorage["md_data"] = md_content;
-                md_content = parseKatex(md_content);
-                var html_content = marked(md_content);
-                // var parsed = $.parseHTML(html_content);
+                var html_content = parseMD(md_content);
                 $("#editor").html(html_content);
-
-                // generate math
-                // MathJax.Hub.Queue(["Typeset", MathJax.Hub, "editor"]);
             });
-
-            // generate pdf
-            //$("#generate_pdf_btn").click(function(){
-            //    generatePDF();
-            //});
         });
     </script>
 </html>
